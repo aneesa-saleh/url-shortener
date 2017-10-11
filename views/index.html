@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Timestamp Microservice</title>
+    <meta name="description" content="A timestamp microservice">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <header>
+      <h1>
+        Timestamp Microservice
+      </h1>
+    </header>
+
+    <main>      
+      <p>Returns a JSON object with unix epoch time and raw time. It works if you pass either unix time or a date string.</p>
+      <h2 id="usage">Usage</h2>
+      <ul>
+        <li>Pass a date string or unix time as a parameter in the url to get a timestamp JSON object.</li>
+        <li>Passing an invalid string or unix time will return a JSON object with null values.</li>
+      </ul>
+      <h3 id="example">Example</h3>
+      <ul>
+        <li>https://timestamp-ms.herokuapp.com/December%2015,%202015</li>
+        <li>https://timestamp-ms.herokuapp.com/1450137600</li>
+      </ul>
+      <p>Output:</p>
+      <p><code>{ "unix": 1450137600, "natural": "December 15, 2015" }</code></p>
+    </main>
+
+    <footer>
+    </footer>
+
+  </body>
+</html>
