@@ -10,6 +10,12 @@ app.get("/", (request, response) => {
   response.sendFile(`${__dirname}/views/index.html`);
 });
 
+//handle 404 (page not found)
+app.get('*', function(request, response){
+  response.status(404);
+  response.sendFile(__dirname + '/views/404.html');
+});
+
 //db uri
 let uri = process.env.DB_URI;
 
