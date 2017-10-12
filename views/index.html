@@ -2,34 +2,65 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Timestamp Microservice</title>
-    <meta name="description" content="A timestamp microservice">
+    <title>URL Shortener Microservice</title>
+    <meta name="description" content="Request header parser microservice">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/main-style.css">
   </head>
   <body>
     <header>
       <h1>
-        Timestamp Microservice
+        URL Shortener Microservice
       </h1>
     </header>
 
-    <main>      
-      <p>Returns a JSON object with unix epoch time and raw time. It works if you pass either unix time or a date string.</p>
+    <main>
+
+      <p>Takes a URL and returns a JSON object with a short URL and original the URL.</p>
+
       <h2 id="usage">Usage</h2>
+
       <ul>
-        <li>Pass a date string or unix time as a parameter in the url to get a timestamp JSON object.</li>
-        <li>Passing an invalid string or unix time will return a JSON object with null values.</li>
+      <li>Pass a valid URL as a parameter to get a short URL JSON object.</li>
+
+      <li>Pass short URL code to get original URL.</li>
+
+      <li>Passing an invalid URL will return an error JSON.</li>
+
+      <li>Passing an unrecognized short URL will return an error JSON.</li>
       </ul>
+
       <h3 id="example">Example</h3>
+
       <ul>
-        <li>https://timestamp-ms.herokuapp.com/December%2015,%202015</li>
-        <li>https://timestamp-ms.herokuapp.com/1450137600</li>
+      <li>https://as-url-shortener.glitch.me/new/https://google.com</li>
+
+      <li>https://as-url-shortener.glitch.me/1234</li>
       </ul>
+
       <p>Output:</p>
-      <p><code>{ "unix": 1450137600, "natural": "December 15, 2015" }</code></p>
+
+      <div class="wrap-code">
+        <code>
+          { <br/>
+            "Short URL": "https://as-url-shortener.glitch.me/1234", <br/>
+            "Original URL": "https://google.com" <br/>
+          } 
+        </code>
+      </div>
+
+      <p>Output:</p>
+
+      <div class="wrap-code">
+        <code>
+          { <br/>
+              "Error": "Code not recognized." <br/>
+            } 
+        </code>
+      </div>
+      
     </main>
 
     <footer>
