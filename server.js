@@ -1,34 +1,37 @@
-var mongo = require('mongodb').MongoClient;
-var express = require('express');
-var app = express();
+let mongo = require('mongodb').MongoClient;
+let express = require('express');
+let app = express();
 
-
-// http://expressjs.com/en/starter/static-files.html
+// serve static files from 'public' folder
 app.use(express.static('public'));
 
-// http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (request, response) {
-  response.sendFile(__dirname + '/views/index.html');
+// send home page
+app.get("/", (request, response) => {
+  response.sendFile(`${__dirname}/views/index.html`);
 });
 
-var uri = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@ds161833.mlab.com:61833/short-urls`;
+//db uri
+let uri = process.env.DB_URI;
 
-mongo.connect(uri, function(err, db){
+mongo.connect(uri, (err, db) => {
   if (err)
-    return console.log('Error: unable to connect to database.');
+    return console.log(`Error: ${err}`);
   
-  db.createCollection("mycollection")
-  var mycollection = db.collection('mycollection');
-  var doc = {
-    name: 'aneesa',
-    age: 22
-  };
-  mycollection.insert(doc)
-  //console.log(db.url_codes.find())
-  //db stuff
-});
+  let url_codes = db.collection('url_codes');
+  
+  //let mycollection = db.collection('mycollection'); 
+  // let doc = {
+  //   name: 'aneesa',
+  //   age: 22
+  // };
+  //mycollection.insert(doc)
+  
+  // url_codes.find().toArray((err, documents) => {
+  //   console.log(documents);
+  //   });
+})
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
-  //console.log('Your app is listening on port ' + listener.address().port);
+let listener = app.listen(process.env.PORT, () => {
+  //console.log(`Your app is listening on port ${listener.address().port}`);
 });

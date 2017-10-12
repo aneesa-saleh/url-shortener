@@ -1,19 +1,32 @@
-# Timestamp Microservice
-Returns a JSON object with unix epoch time and raw time. It works if you pass either unix time or a date string.
+# URL Shortener Microservice
+Takes a URL and returns a JSON object with a short URL and original the URL.
 
 ## Usage
-* Pass a date string or unix time as a parameter in the url to get a timestamp JSON object.
-* Passing an invalid string or unix time will return a JSON object with null values.
+* Pass a valid URL as a parameter to get a short URL JSON object.
+* Pass short URL code to get original URL.
+* Passing an invalid URL will return an error JSON.
+* Passing an unrecognized short URL will return an error JSON.
 
 ### Example
 
-* https://as-timestamp-microservice.glitch.me//December%2015,%202015
-* https://as-timestamp-microservice.glitch.me//1450137600
+* https://as-url-shortener.glitch.me/new/https://google.com
+* https://as-url-shortener.glitch.me/1234
 
 Output:
 
-```{ 
-  "unix": 1450137600, 
-  "natural": "December 15, 2015" 
-}```
+``` 
+{ 
+  "Short URL": "https://as-url-shortener.glitch.me/1234", 
+  "Original URL": "https://google.com" 
+} 
+```
+
+Error output:
+```
+{ 
+  "Error": "Code not recognized."
+}
+```
+
+
 
