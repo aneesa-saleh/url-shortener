@@ -13,7 +13,8 @@
     "express": "^4.16.1",
     "babel": "^6.23.0",
     "mongodb": "^2.2.31",
-    "is-url": "^1.2.2"
+    "is-url": "^1.2.2",
+    "short-url-generator": "^0.0.13"
   },
   "engines": {
     "node": "8.x"
