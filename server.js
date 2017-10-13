@@ -33,8 +33,13 @@ function strcmp(a, b) {
 }
 
 // send home page
-app.get(["/","/new"], (request, response) => {
+app.get("/", (request, response) => {
   response.sendFile(`${__dirname}/views/index.html`);
+});
+
+// send home page
+app.get("/new", (request, response) => {
+  response.redirect('https://as-url-shortener.glitch.me/');
 });
 
 // get url from code

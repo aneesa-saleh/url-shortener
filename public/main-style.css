@@ -5,6 +5,14 @@ body {
   margin: 25px;
 }
 
+main {
+  background-color: #f7f4f5;
+  padding: 20px;
+  display: table;
+  margin: 0px auto;
+  border-radius: 3px;
+}
+
 li{
   list-style-type: square;
 }
@@ -14,14 +22,16 @@ code{
 }
 
 .wrap-code{
-  background-color: #f9eff2;
+  background-color: #e8e1e1;
   padding: 5px;
   border-radius: 5px;
-  display: inline-block;
+  display: table;
+  margin: 0px auto;
 }
 
 h1 {
   color: #6d1d3d;
+  text-align: center;
 }
 
 

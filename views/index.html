@@ -31,27 +31,33 @@
 
       <li>Passing an unrecognized short URL will return an error JSON.</li>
       </ul>
-
-      <h3 id="example">Example</h3>
-
+      
+      <h3>Example</h3>
+      
+      <h4>Get new URL short code:</h4>
+      
       <ul>
-      <li>https://as-url-shortener.glitch.me/new/https://google.com</li>
-
-      <li>https://as-url-shortener.glitch.me/1234</li>
+        <li>https://as-url-shortener.glitch.me/new/https://google.com</li>
+      </ul>
+      
+      <h4>Visit URL using short code:</h4>
+      
+      <ul>
+        <li>https://as-url-shortener.glitch.me/9P9QX</li>
       </ul>
 
-      <p>Output:</p>
+      <p>Sample JSON Output:</p>
 
       <div class="wrap-code">
         <code>
           { <br/>
-            "Short URL": "https://as-url-shortener.glitch.me/1234", <br/>
+            "Short URL": "https://as-url-shortener.glitch.me/9P9QX", <br/>
             "Original URL": "https://google.com" <br/>
           } 
         </code>
       </div>
 
-      <p>Output:</p>
+      <p>Sample Error:</p>
 
       <div class="wrap-code">
         <code>
