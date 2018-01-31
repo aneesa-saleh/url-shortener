@@ -13,9 +13,9 @@ let uri = process.env.DB_URI;
 //regex to check an alphanumeric string
 let regexAN = /^[a-z0-9]+$/i;
 
-function errorJSON(text){
+function errorJSON(error){
   return {
-            "Error" : text
+            "Error" : error
          };
 }
 
@@ -37,7 +37,28 @@ app.get("/", (request, response) => {
   response.sendFile(`${__dirname}/views/index.html`);
 });
 
-// send home page
+//get all records
+app.get("/all", (request, response) => {
+  console.log('all');
+  mongo.connect(uri, (err, db) => {
+    if(err)
+      return errorJSON("A database error occurred.");
+    
+    console.log(`got db response ${db}`);
+    
+    let url_codes = db.collection('url_codes');
+    let result = url_codes.find({}).toArray((err, documents) => {
+      if(err)
+        return errorJSON("A database error occurred.");
+      
+      if(documents.length === 0)
+        return response.json(errorJSON("No records to display."));
+      return response.json(documents);
+    })
+  })
+});
+
+// create new short url
 app.get("/new", (request, response) => {
   response.redirect('https://as-url-shortener.glitch.me/');
 });
